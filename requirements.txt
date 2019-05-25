@@ -1,0 +1,3 @@
+requests-html
+validate_email
+googletrans
