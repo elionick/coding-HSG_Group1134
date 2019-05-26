@@ -1,13 +1,9 @@
 import smtplib
 from email.message import EmailMessage
 
-
-
-
 def sendEmail(receiver, topic, content):
 
     subjects = {'recipe': 'Recipe from the recipe-application', 'shoppinglist': 'Shoppinglist from the recipe-application'}
-
     messages = {'recipe': 'This is your chosen recipe. Enjoy!!\n',
                 'shoppinglist': 'This is your shopping list: '}
 
@@ -18,7 +14,7 @@ def sendEmail(receiver, topic, content):
 
     if topic == 'recipe':
         recipemail = []
-
+    
         content[1] = '<br>'.join(content[1].split('\n'))
         # Construct the email in HTML
         recipemail.append('<DOCTYPE HTML!>\n<html>\n<body>')
@@ -53,7 +49,7 @@ def sendEmail(receiver, topic, content):
         msg.set_content(messages[topic] + '\n' + str(shoppinglist))
         msg.add_alternative(shoppinglist, subtype='html')
 
-
+    # Send the constructed messages
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login('codingathsg@gmail.com', ']GcU[2za<p3ms<w8')
             smtp.send_message(msg)
