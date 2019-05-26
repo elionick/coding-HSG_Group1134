@@ -1,5 +1,6 @@
 requests-html
 requests
 bs4
+lxml
 validate_email
 googletrans
