@@ -1,3 +1,5 @@
 requests-html
+requests
+bs4
 validate_email
 googletrans
