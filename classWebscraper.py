@@ -5,7 +5,6 @@ from getFunctions import *
 
 class mealScraper():
 
-
     def __init__(self, keyword):
         self.keyword = keyword
         self.recipeList = []
@@ -21,7 +20,8 @@ class mealScraper():
 
         recipes = r.html.find('article')
         i = 1
-
+        
+        # Find title, time, difficulty and recipe-URL
         try:
             for recipe in recipes:
                 title = recipe.find('h2', first=True).text
@@ -33,6 +33,7 @@ class mealScraper():
         except (TimeoutError, AttributeError):
             print('Error! Website not responding. Try again!')
 
+    # Show the recipes for a desired ingredient / meal by the user. Also he can say how many.
     def showRecipes(self, *args):
         arglist = list(args)
         try:
@@ -66,7 +67,7 @@ class mealScraper():
                 self.choice = int(self.choice)
                 i = 1
 
-
+    # Get detailed information for recipe chosen.
     def getRecipe(self):
         self.choice = self.choice-1
         self.url = self.recipeList[self.choice][4]
@@ -84,8 +85,6 @@ class mealScraper():
             self.instructions = r.html.find('.instructions', first=True).text
         except:
             print('Error! There seems to be a problem with this recipe. Try again!')
-
-
 
 
 if __name__ == "__main__":
