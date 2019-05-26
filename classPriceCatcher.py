@@ -121,26 +121,26 @@ class priceRetriever:
 
         # Calculate the price for the ingredient amount used in the recipe.
         for i in range(len(self.priceList)):
-            if self.ingredients[i][0] != self.ingredients[i][0].split(" ")[0]:
+            if self.ingredients[i][0] != self.ingredients[i][0].split(' ')[0]:
                 try:
-                    if float(self.ingredients[i][0].split(" ")[0]) < 20:
-                        self.priceList[i] = float("%.2f" % (float(self.ingredients[i][0].split(" ")[0]) * float(self.priceList[i])))
+                    if float(self.ingredients[i][0].split(' ')[0]) < 20:
+                        self.priceList[i] = float('%.2f' % (float(self.ingredients[i][0].split(' ')[0]) * float(self.priceList[i])))
                     else:
-                        self.priceList[i] = float("%.2f" % (float(self.ingredients[i][0].split(" ")[0])/ float(1000/self.priceList[i])))
+                        self.priceList[i] = float('%.2f' % (float(self.ingredients[i][0].split(' ')[0])/ float(1000/self.priceList[i])))
                 except:
                     pass
 
             else:
                 try:
-                    self.priceList[i] = float("%.2f" % (float(self.ingredients[i][0].split(" ")[0]) * float(self.priceList[i])))
+                    self.priceList[i] = float('%.2f' % (float(self.ingredients[i][0].split(' ')[0]) * float(self.priceList[i])))
                 except:
                     pass
 
         # Calculate the overall price of the recipe
-        self.menuPrice = "%.2f" % sum(self.priceList)
+        self.menuPrice = '%.2f' % sum(self.priceList)
 
         for i in range(len(self.priceList)):
-            self.shoppingList.append([self.ingredients[i][0], self.ingredientPrices[i].split(',')[1], str("%.2f" % self.priceList[i]) + " CHF"])
+            self.shoppingList.append([self.ingredients[i][0], self.ingredientPrices[i].split(',')[1], str('%.2f' % self.priceList[i]) + ' CHF'])
 
 
 if __name__ == '__main__':
