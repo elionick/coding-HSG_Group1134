@@ -21,6 +21,8 @@ while choice not in ['q', 'Q']:
         translationString = ""
 
     choice = uiMenu(mainMenu, menu_title='Main Menu',sub_title=f'In this application you can search for a meal and we will suggest recipes. \nHowever, this search is only available in german. So if you need some help with the translation I also implemented a translator. \nYour translations will appear here!\n\n{translationString} ', user_instruction='What would you like to do?')
+    
+    # Menu for finding a recipe
     if choice == 1:
 
         # Look for a recipe
@@ -29,9 +31,8 @@ while choice not in ['q', 'Q']:
 
         ms = mealScraper(choice)
         ms.getMeals()
-        # numberResults = input('Optional: How many Results do you want? Press enter to skip!: ')
-
-
+        
+        # Chose a recipe
         choice = uiMenu(numberOfRecipes, menu_title=f'Recipes for {meal}!', input_type='questions')
         ms.showRecipes(choice[0])
         ms.getRecipe()
@@ -56,7 +57,8 @@ while choice not in ['q', 'Q']:
                     ingredients = '\n'.join(ms.originalIngredients)
 
                 choice = uiMenu(detailMenu, menu_title=f'Here are the ingredients:', sub_title=f'\nThe price is aproximately: {pr.menuPrice} CHF in Coop! (For more info check the shopping list)\n\n{ingredients}\n\n{ms.instructions}')
-
+                
+                # Send recipe to email
                 if choice == 1:
                     while choice not in ['q', 'Q']:
                         choice = uiMenu(email, menu_title='Sending the recipe!', input_type='questions')
@@ -67,7 +69,8 @@ while choice not in ['q', 'Q']:
 
                         choice = ''
                         break
-
+                        
+                # Send shoppinglist to email
                 if choice == 2:
                     while choice not in ['q', 'Q']:
                         choice = uiMenu(email, menu_title='Sending the shoppinglist!', input_type='questions')
@@ -78,11 +81,13 @@ while choice not in ['q', 'Q']:
 
                         choice = ''
                         break
-
+                        
+                # Go back in menu
                 if choice == 3:
                     choice = ''
                     break
-
+                    
+            # Send recipe to email
             if choice == 2:
                 while choice not in ['q', 'Q']:
                     choice = uiMenu(email, menu_title='Sending the recipe!', input_type='questions')
@@ -107,11 +112,12 @@ while choice not in ['q', 'Q']:
 
                     choice = ''
                     break
-
+            # Go back in menu
             if choice == 3:
                 choice = ''
                 break
-
+                
+    # Menu for translator
     if choice == 2:
         while choice not in ['q', 'Q']:
             choice = uiMenu(translator, menu_title='Translator', input_type='questions', quit_option=True)
