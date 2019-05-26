@@ -5,7 +5,8 @@ def getChoiceInput(user_input):
         return int(user_input)
     else:
         return user_input
-
+    
+# Get a certain error message
 def getErrorMessage(error_code):
     errorMessages = {
     "choice" : "Error! Please enter a valid option.",
