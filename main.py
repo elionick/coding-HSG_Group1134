@@ -18,7 +18,7 @@ while choice not in ['q', 'Q']:
         translationString = '\n'.join(translations)
     else:
         translations = []
-        translationString = ""
+        translationString = ''
 
     choice = uiMenu(mainMenu, menu_title='Main Menu',sub_title=f'In this application you can search for a meal and we will suggest recipes. \nHowever, this search is only available in german. So if you need some help with the translation I also implemented a translator. \nYour translations will appear here!\n\n{translationString} ', user_instruction='What would you like to do?')
     
@@ -52,7 +52,7 @@ while choice not in ['q', 'Q']:
 
                 if 'ingredients' not in globals():
                     for i in range(len(ms.originalIngredients)):
-                        ms.originalIngredients[i] = " ".join(ms.originalIngredients[i])
+                        ms.originalIngredients[i] = ' '.join(ms.originalIngredients[i])
 
                     ingredients = '\n'.join(ms.originalIngredients)
 
@@ -63,7 +63,7 @@ while choice not in ['q', 'Q']:
                     while choice not in ['q', 'Q']:
                         choice = uiMenu(email, menu_title='Sending the recipe!', input_type='questions')
                         if checkEmail(choice[0]):
-                            sendEmail(choice, "recipe", [pr.menuPrice, ingredients, ms.instructions])
+                            sendEmail(choice, 'recipe', [pr.menuPrice, ingredients, ms.instructions])
                         print(f'An email has been sent to {choice[0]}')
                         time.sleep(2)
 
@@ -75,7 +75,7 @@ while choice not in ['q', 'Q']:
                     while choice not in ['q', 'Q']:
                         choice = uiMenu(email, menu_title='Sending the shoppinglist!', input_type='questions')
                         if checkEmail(choice[0]):
-                            sendEmail(choice, "shoppinglist", [pr.ingredientPrices, pr.priceList, pr.menuPrice])
+                            sendEmail(choice, 'shoppinglist', [pr.ingredientPrices, pr.priceList, pr.menuPrice])
                         print(f'An email has been sent to {choice[0]}')
                         time.sleep(2)
 
@@ -106,7 +106,7 @@ while choice not in ['q', 'Q']:
 
                             ingredients = '\n'.join(ms.originalIngredients)
 
-                        sendEmail(choice, "recipe", [pr.menuPrice, ingredients, ms.instructions])
+                        sendEmail(choice, 'recipe', [pr.menuPrice, ingredients, ms.instructions])
                     print(f'An email has been sent to {choice[0]}')
                     time.sleep(2)
 
