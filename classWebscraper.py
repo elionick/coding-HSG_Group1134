@@ -9,10 +9,10 @@ class mealScraper():
         self.keyword = keyword
         self.recipeList = []
         self.choice = int()
-        self.url = ""
+        self.url = ''
         self.originalIngredients = []
         self.ingredients = []
-        self.instructions = ""
+        self.instructions = ''
 
     def getMeals(self):
         session = HTMLSession()
@@ -58,11 +58,11 @@ class mealScraper():
 
         i = 0
         while i == 0:
-            self.choice = input("Which recipe would you like to inspect?: ")
+            self.choice = input('Which recipe would you like to inspect?: ')
             if checkStringIsInt(self.choice) == False:
-                print(getErrorMessage("choice"))
+                print(getErrorMessage('choice'))
             elif int(self.choice) > length:
-                print(getErrorMessage("choice"))
+                print(getErrorMessage('choice'))
             else:
                 self.choice = int(self.choice)
                 i = 1
@@ -77,7 +77,7 @@ class mealScraper():
             r = session.get(self.url)
             ingredients = r.html.find('.incredients', first=True).find('tr')
             for ingredient in ingredients:
-                amount = ingredient.find('.amount')[0].text.replace("\xa0", " ")
+                amount = ingredient.find('.amount')[0].text.replace('\xa0', ' ')
                 type = ingredient.find('td')[1].text
                 self.originalIngredients.append([amount, type])
                 self.ingredients.append([amount, type])
@@ -87,6 +87,6 @@ class mealScraper():
             print('Error! There seems to be a problem with this recipe. Try again!')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     pass
 
