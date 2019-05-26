@@ -13,10 +13,10 @@ def clear_screen():
     os.system(command)
 
 # Displays a menu and returns an input
-def uiMenu(menu_elements_list, menu_title = None, sub_title = None, user_instruction = None, nOptions = None, input_type = "choice",
+def uiMenu(menu_elements_list, menu_title = None, sub_title = None, user_instruction = None, nOptions = None, input_type = 'choice',
             clear = True, quit_option = True):
 
-    if input_type == "questions":
+    if input_type == 'questions':
         answers = []
 
     while True:
@@ -26,26 +26,26 @@ def uiMenu(menu_elements_list, menu_title = None, sub_title = None, user_instruc
         if menu_title != None:
             if isinstance(menu_title, str) == False:
                 menu_title()
-                print("")
+                print('')
             else:
-                print("*** " + menu_title + " ***")
-                print("")
+                print('*** ' + menu_title + ' ***')
+                print('')
         if sub_title != None:
             if isinstance(sub_title, str) == False:
                 sub_title()
-                print("")
+                print('')
             else:
                 print(sub_title)
-                print("")
+                print('')
         
         #Prints the user's options and returns his input
-        if input_type == "choice":
+        if input_type == 'choice':
             for index, element in enumerate(menu_elements_list):
-                print(str(index + 1) + ":\t", end = "")
+                print(str(index + 1) + ':\t', end = '')
                 print(element)
             if quit_option == True:
-                print("q:\tQuit")
-            print("")
+                print('q:\tQuit')
+            print('')
             if user_instruction != None:
                 print(user_instruction)
             user_input = input()
@@ -58,15 +58,15 @@ def uiMenu(menu_elements_list, menu_title = None, sub_title = None, user_instruc
                 return choice
             
         #Prints the questions and returns the input
-        if input_type == "questions":
+        if input_type == 'questions':
             for index, answer in enumerate(answers):
-                print(menu_elements_list[index] + ": " + answer)
-                print("")
-            user_input = input(menu_elements_list[len(answers)] + ": ")
+                print(menu_elements_list[index] + ': ' + answer)
+                print('')
+            user_input = input(menu_elements_list[len(answers)] + ': ')
             answers.append(user_input)
             if len(menu_elements_list) == len(answers):
                 return answers
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     pass
