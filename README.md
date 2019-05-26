@@ -30,6 +30,9 @@ python main.py
 ```
 with which my application will be started. 
 
+## Instructions
+
+Once the application is running, the user can navigate throught the menu with the indicated numbers / keys. E.g: To go into sub-menu point 1, simply press 1.
 
 ## The application
 
