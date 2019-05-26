@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as soup
 import requests
 
-
+# Defines a class which connects to coop and scrapes the information
 class CoopScraper(object):
     def __init__(self, product):
         self.query = product
@@ -18,7 +18,8 @@ class CoopScraper(object):
         product_price_list = []
         product_weight_list = []
         
-        # For each product field on the website, we retrieve name, brand, and price
+        # For each product field on the website, I retrieve name, brand, and price
+        # Done by looking for corresponding HTML tags.
         for product in file_soup.findAll("li", class_="list-page__item"):
 
             try:
