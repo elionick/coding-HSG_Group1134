@@ -13,12 +13,12 @@ class priceRetriever:
         self.priceList = []
         self.menuPrice = float()
         self.shoppingList = []
-
+ 
+    # Filter out ingredients which are in most households already.
     def filterIngredients(self):
         irrelevant_measurements = ['EL', 'TL', 'Tasse', 'Tassen', 'Prise', 'Msp']
         for each in irrelevant_measurements:
             for i in range(len(self.ingredients)):
-
                 if each in self.ingredients[i][0] or self.ingredients[i][0] == '':
                     self.ingredients[i] = 'irrelevant measurement'
         try:
@@ -26,17 +26,20 @@ class priceRetriever:
                 self.ingredients.remove('irrelevant measurement')
         except ValueError:
             pass
-
+        
+    # Account for different ways to write the same ingredient.
     def findIngredients(self):
         commonIngredientsDict = {'Eigelb':'Eier', 'Eiweiss':'Eier', 'Eiweiß':'Eier', 'Ei':'Eier', 'Ei(er)':'Eier'}
         splitIngredients = []
+        
         for i in range(len(self.ingredients)):
+           
+            # Find ingredients listed like: "Banana(s)"
             r = re.compile(r'.*\(.*\)')
             matches = r.findall(str(self.ingredients[i]))
             if matches:
                 for match in matches:
                     splitIngredients.append(self.ingredients[i][1].split('('))
-
             else:
                 splitIngredients.append(self.ingredients[i][1].split(' '))
 
@@ -47,7 +50,7 @@ class priceRetriever:
                 self.finalIngredients.append(splitIngredients[i][0].strip(','))
 
     def getCoopPrices(self):
-
+                                            
         brandsCoop = ['Naturaplan', 'Bio', 'Prix', 'Garantie',
                       'Naturafarm', 'Emmi', 'Floralp', 'Zweifel']
 
@@ -116,8 +119,8 @@ class priceRetriever:
             except ValueError:
                 self.priceList.append(float(0))
 
+        # Calculate the price for the ingredient amount used in the recipe.
         for i in range(len(self.priceList)):
-
             if self.ingredients[i][0] != self.ingredients[i][0].split(" ")[0]:
                 try:
                     if float(self.ingredients[i][0].split(" ")[0]) < 20:
@@ -133,7 +136,7 @@ class priceRetriever:
                 except:
                     pass
 
-
+        # Calculate the overall price of the recipe
         self.menuPrice = "%.2f" % sum(self.priceList)
 
         for i in range(len(self.priceList)):
