@@ -64,11 +64,11 @@ while choice not in ['q', 'Q']:
                         choice = uiMenu(email, menu_title='Sending the recipe!', input_type='questions')
                         if checkEmail(choice[0]):
                             sendEmail(choice, 'recipe', [pr.menuPrice, ingredients, ms.instructions])
-                        print(f'An email has been sent to {choice[0]}')
-                        time.sleep(2)
+                            print(f'An email has been sent to {choice[0]}')
+                            time.sleep(2)
 
-                        choice = ''
-                        break
+                            choice = ''
+                            break
                         
                 # Send shoppinglist to email
                 if choice == 2:
@@ -76,11 +76,11 @@ while choice not in ['q', 'Q']:
                         choice = uiMenu(email, menu_title='Sending the shoppinglist!', input_type='questions')
                         if checkEmail(choice[0]):
                             sendEmail(choice, 'shoppinglist', [pr.ingredientPrices, pr.priceList, pr.menuPrice])
-                        print(f'An email has been sent to {choice[0]}')
-                        time.sleep(2)
+                            print(f'An email has been sent to {choice[0]}')
+                            time.sleep(2)
 
-                        choice = ''
-                        break
+                            choice = ''
+                            break
                         
                 # Go back in menu
                 if choice == 3:
@@ -107,11 +107,11 @@ while choice not in ['q', 'Q']:
                             ingredients = '\n'.join(ms.originalIngredients)
 
                         sendEmail(choice, 'recipe', [pr.menuPrice, ingredients, ms.instructions])
-                    print(f'An email has been sent to {choice[0]}')
-                    time.sleep(2)
+                        print(f'An email has been sent to {choice[0]}')
+                        time.sleep(2)
 
-                    choice = ''
-                    break
+                        choice = ''
+                        break
             # Go back in menu
             if choice == 3:
                 choice = ''
