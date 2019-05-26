@@ -1,6 +1,5 @@
 from validate_email import validate_email
 
-
 # checks if user input is possible choice
 def checkIfChoice(input, poss_options, quit_option = True):
     if quit_option == True:
@@ -25,7 +24,7 @@ def checkIfChoice(input, poss_options, quit_option = True):
         except ValueError:
             return False
 
-# Checks if String is integer
+# Checks if string is integer
 def checkStringIsInt(input):
     try:
         if input.isdigit() == True:
@@ -35,11 +34,11 @@ def checkStringIsInt(input):
     except ValueError:
         return False
 
-
+#Checks if string contains a number
 def checkIfStringContainsNumbers(input):
         return any(char.isdigit() for char in input)
 
-# Check email
+# Checks if a string is in a valid email address format
 def checkEmail(input):
     return True if validate_email(input) == True else False
 
